@@ -108,7 +108,8 @@
      (man-page "git-stash")
      (actions
       ("z" "Save" magit-stash)
-      ("s" "Snapshot" magit-stash-snapshot))
+      ("s" "Snapshot" magit-stash-snapshot)
+      ("b" "Save and branch" magit-stash-branch))
      (switches
       ("-k" "Keep index" "--keep-index")))
 

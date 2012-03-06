@@ -4648,6 +4648,16 @@ With prefix argument, changes in staging area are kept.
   (interactive "sStash description: ")
   (apply 'magit-run-git `("stash" "save" ,@magit-custom-options "--" ,description)))
 
+(magit-define-command stash-branch (description branch)
+  "Create a new stash of the working tree named DESCRIPTION,
+create and checkout a new branch named BRANCH and then apply the
+stash to it.  
+\('git stash save DESCRIPTION && git stash branch BRANCH')"
+  (interactive "sStash description: \nsBranch: ")
+  (magit-with-refresh
+    (apply 'magit-run-git `("stash" "save" ,@magit-custom-options "--" ,description))
+    (apply 'magit-run-git `("stash" "branch" ,branch))))
+
 (magit-define-command stash-snapshot ()
   "Create new stash of working tree and staging area; keep changes in place.
 \('git stash save \"Snapshot...\"; git stash apply stash@{0}')"
